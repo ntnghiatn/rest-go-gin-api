@@ -1,0 +1,34 @@
+@devUrl=localhost:9090
+@apiV1=/api/v1
+
+POST {{apiV1}}/auth/token
+Host: {{devUrl}}
+Content-Type: application/json
+
+{}
+
+### Get List
+GET {{apiV1}}/user/list
+Host: {{devUrl}}
+Content-Type: application/json
+Authorization: eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3MDEyNjE0NzIsImlzcyI6Iklzc3Vlci1UZXN0Iiwic3ViIjoiaGVsbG8ifQ.oyrHAeDI0t4tPE3nXFJFVq9k7xj0fvXP8ObPYDoksbRLSZPyIzHckHAnlzQDZwdiTJ25XQFvUlqRtNxSEyV9VNa6wdR5r2xOkIvp-Il-OaCEL85Tj2Liv2QGUXmXg9TockWwq-ePbvEeFepUnlCZ2F1fpaxH0tjQzd3P-gKCixw
+
+### Get By Id
+GET {{apiV1}}/users/5
+Host: {{devUrl}}
+Content-Type: application/json
+
+### Create
+POST {{apiV1}}/user/create
+Host: {{devUrl}}
+Content-Type: application/json
+
+{
+  "name":"Thinh Ngo bbdd",
+  "age": 208,
+  "address": {
+    "state": "Ho Chi Minh",
+    "city": "Ho Chi Minh City",
+    "pincode": 700000
+  }
+}
