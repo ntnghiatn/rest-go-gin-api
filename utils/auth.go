@@ -27,8 +27,10 @@ func ParseToken(tokenString string) (interface{}, error) {
 	if err != nil {
 		return nil, err
 	}
-	publicKey := LoadRSAPublicKeyFromDisk(dir + "/public.pem")
-
+	publicKey, err := LoadRSAPublicKeyFromDisk(dir + "/public.pem")
+	if err != nil {
+		return "", err
+	}
 	//
 	token, err := jwt.ParseWithClaims(tokenString, &jwt.StandardClaims{}, func(token *jwt.Token) (interface{}, error) {
 		return publicKey, nil
@@ -51,11 +53,14 @@ func GenToken(sub string) (string, error) {
 		log.Fatal(err)
 		return "", err
 	}
-	signingkey := LoadRSAPrivateKeyFromDisk(dir + "/private.pem")
+	signingkey, err := LoadRSAPrivateKeyFromDisk(dir + "/private.pem")
+	if err != nil {
+		return "", err
+	}
 
 	// Create the Claims
 	claims := &jwt.StandardClaims{
-		ExpiresAt: time.Now().Add(time.Duration(1) * time.Minute).Unix(),
+		ExpiresAt: time.Now().Add(time.Duration(10) * time.Minute).Unix(),
 		Issuer:    "Issuer-Test",
 		Subject:   sub,
 	}

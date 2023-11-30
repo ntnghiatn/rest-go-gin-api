@@ -17,6 +17,7 @@ var (
 	userService    services.UserServive
 	userController controllers.UserController
 	authController controllers.AuthController
+	nikaHandler    controllers.NikayaController
 	ctx            context.Context
 	userCollection *mongo.Collection
 	mongoClient    *mongo.Client
@@ -30,6 +31,7 @@ var (
 func init() {
 	ctx := context.TODO()
 
+	// clientOps := options.Client().ApplyURI("mongodb+srv://nghiango:Nghia385685@federateddatabaseinstance0-gr4nd.a.query.mongodb.net/?ssl=true&authSource=admin")
 	clientOps := options.Client().ApplyURI("mongodb+srv://nghiango:Nghia385685@cluster0.gr4nd.mongodb.net/userdb")
 
 	mongoClient, err = mongo.Connect(ctx, clientOps)
@@ -48,6 +50,7 @@ func init() {
 	userService = services.NewUserService(userCollection, ctx)
 	userController = controllers.New(userService)
 	authController = controllers.NewAuthController(services.NewAuthService(ctx))
+	nikaHandler = controllers.NewNikayaHandler(services.NewNikayaService(ctx))
 
 	// Khởi tạo server
 	server = gin.New()
@@ -61,6 +64,7 @@ func main() {
 	apiV1 := server.Group("/api/v1")
 	userController.RegisterUserRoutes(apiV1)
 	authController.RegisterAuthRoutes(apiV1)
+	nikaHandler.RegisterNikayaRoutes(apiV1)
 
 	log.Fatal(server.Run(":9090"))
 }

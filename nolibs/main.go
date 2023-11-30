@@ -8,8 +8,6 @@ import (
 	"os"
 	"regexp"
 	"sync"
-
-	"github.com/ntnghiatn/rest-go-gin-api/utils"
 )
 
 var (
@@ -155,8 +153,7 @@ func main() {
 		log.Fatal(err)
 	}
 	fmt.Println(dir)
-	key := utils.LoadRSAPrivateKeyFromDisk(dir + "/private.pem")
-	fmt.Println(&key)
+
 	//end -test
 	mux := http.NewServeMux()
 	userH := &userHandler{

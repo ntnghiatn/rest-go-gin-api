@@ -20,14 +20,15 @@ func Auth() gin.HandlerFunc {
 			return
 		}
 		data, err := utils.ParseToken(tokenString)
-		fmt.Println("Data: ", data, err)
 		if err != nil {
+			fmt.Println("Err: ", err)
 			context.JSON(401, gin.H{"error": err.Error()})
 			context.Abort()
 			return
 		}
 		if data != nil { // có thể parse data tại đây để check tiệp
 			context.Next()
+			return
 		}
 		context.JSON(401, gin.H{"error": err.Error()})
 		context.Abort()
