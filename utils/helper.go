@@ -7,29 +7,32 @@ import (
 	"github.com/golang-jwt/jwt"
 )
 
-func LoadRSAPrivateKeyFromDisk(location string) *rsa.PrivateKey {
+func LoadRSAPrivateKeyFromDisk(location string) (*rsa.PrivateKey, error) {
 	keyData, e := os.ReadFile(location)
 	if e != nil {
-		panic(e.Error())
+		// panic(e.Error())
+		return nil, e
 	}
 	key, e := jwt.ParseRSAPrivateKeyFromPEM(keyData)
 	if e != nil {
-		panic(e.Error())
+		// panic(e.Error())
+		return nil, e
 	}
-	return key
+	return key, nil
 }
 
-func LoadRSAPublicKeyFromDisk(location string) *rsa.PublicKey {
-	// fmt.Println(location)
+func LoadRSAPublicKeyFromDisk(location string) (*rsa.PublicKey, error) {
 	keyData, e := os.ReadFile(location)
 	if e != nil {
-		panic(e.Error())
+		// panic(e.Error())
+		return nil, e
 	}
 	key, e := jwt.ParseRSAPublicKeyFromPEM(keyData)
 	if e != nil {
-		panic(e.Error())
+		// panic(e.Error())
+		return nil, e
 	}
-	return key
+	return key, nil
 }
 
 /*
