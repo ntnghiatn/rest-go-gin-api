@@ -124,30 +124,6 @@ func internalServerError(w http.ResponseWriter, r *http.Request) {
 
 func main() {
 
-	//test read file pem
-	// Load PEM
-	// pemfile, err := os.Open("./private.pem")
-
-	// if err != nil {
-	// 	fmt.Println(err)
-	// 	os.Exit(1)
-	// }
-
-	// // need to convert pemfile to []byte for decoding
-
-	// pemfileinfo, _ := pemfile.Stat()
-	// var size int64 = pemfileinfo.Size()
-	// pembytes := make([]byte, size)
-
-	// // read pemfile content into pembytes
-	// buffer := bufio.NewReader(pemfile)
-	// _, err = buffer.Read(pembytes)
-
-	// // proper decoding now
-	// data, _ := pem.Decode([]byte(pembytes))
-
-	// pemfile.Close()
-
 	dir, err := os.Getwd()
 	if err != nil {
 		log.Fatal(err)
@@ -165,6 +141,6 @@ func main() {
 		},
 	}
 	mux.Handle("/users/", userH)
-	// mux.Handle("/users", userH)
+	mux.Handle("/users", userH)
 	http.ListenAndServe("localhost:8080", mux)
 }

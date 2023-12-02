@@ -10,6 +10,8 @@ import (
 	"github.com/golang-jwt/jwt"
 )
 
+const ACCESS_TOKEN_TIME = 18
+
 func MakeToken(c jwt.Claims, key interface{}) string {
 	token := jwt.NewWithClaims(jwt.SigningMethodRS256, c)
 	s, e := token.SignedString(key)
@@ -27,7 +29,7 @@ func ParseToken(tokenString string) (interface{}, error) {
 	if err != nil {
 		return nil, err
 	}
-	publicKey, err := LoadRSAPublicKeyFromDisk(dir + "/public.pem")
+	publicKey, err := LoadRSAPublicKeyFromDisk(dir + "/keys/public.pem")
 	if err != nil {
 		return "", err
 	}
@@ -53,14 +55,14 @@ func GenToken(sub string) (string, error) {
 		log.Fatal(err)
 		return "", err
 	}
-	signingkey, err := LoadRSAPrivateKeyFromDisk(dir + "/private.pem")
+	signingkey, err := LoadRSAPrivateKeyFromDisk(dir + "/keys/private.pem")
 	if err != nil {
 		return "", err
 	}
 
 	// Create the Claims
 	claims := &jwt.StandardClaims{
-		ExpiresAt: time.Now().Add(time.Duration(10) * time.Minute).Unix(),
+		ExpiresAt: time.Now().Add(time.Duration(ACCESS_TOKEN_TIME) * time.Minute).Unix(),
 		Issuer:    "Issuer-Test",
 		Subject:   sub,
 	}
