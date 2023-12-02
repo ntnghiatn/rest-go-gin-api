@@ -26,7 +26,8 @@ func (*NikayaServiceImpl) TrungBoKinhRand() int {
 
 // TruongBoKinhRand implements NikayaServive.
 func (*NikayaServiceImpl) TruongBoKinhRand() int {
-	panic("unimplemented")
+	// panic("unimplemented")
+	return randInt(1, 34)
 }
 
 // TuongUngBoKinhRand implements NikayaServive.

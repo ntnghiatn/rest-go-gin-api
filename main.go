@@ -5,8 +5,11 @@ import (
 	"log"
 
 	"github.com/gin-gonic/gin"
+	"github.com/joho/godotenv"
 	"github.com/ntnghiatn/rest-go-gin-api/controllers"
+	"github.com/ntnghiatn/rest-go-gin-api/routers"
 	"github.com/ntnghiatn/rest-go-gin-api/services"
+	"github.com/ntnghiatn/rest-go-gin-api/utils"
 	"go.mongodb.org/mongo-driver/mongo"
 	"go.mongodb.org/mongo-driver/mongo/options"
 	"go.mongodb.org/mongo-driver/mongo/readpref"
@@ -31,8 +34,15 @@ var (
 func init() {
 	ctx := context.TODO()
 
+	err := godotenv.Load()
+	if err != nil {
+		log.Fatalf("Unable to load .env")
+	}
+
 	// clientOps := options.Client().ApplyURI("mongodb+srv://nghiango:Nghia385685@federateddatabaseinstance0-gr4nd.a.query.mongodb.net/?ssl=true&authSource=admin")
-	clientOps := options.Client().ApplyURI("mongodb+srv://nghiango:Nghia385685@cluster0.gr4nd.mongodb.net/userdb")
+	connectStr := utils.ConnectionString("MONGO_URI")
+	clientOps := options.Client().ApplyURI(connectStr)
+	// clientOps := options.Client().ApplyURI("mongodb+srv://nghiango:Nghia385685@cluster0.gr4nd.mongodb.net/userdb")
 
 	mongoClient, err = mongo.Connect(ctx, clientOps)
 	if err != nil {
@@ -62,9 +72,10 @@ func main() {
 		log.Fatal("mongo disconnection")
 	}()
 	apiV1 := server.Group("/api/v1")
+
 	userController.RegisterUserRoutes(apiV1)
 	authController.RegisterAuthRoutes(apiV1)
-	nikaHandler.RegisterNikayaRoutes(apiV1)
+	routers.RegisterNikayaRoutes(ctx, apiV1)
 
 	log.Fatal(server.Run(":9090"))
 }

@@ -1,10 +1,10 @@
 @devUrl=localhost:9090
 @apiV1=/api/v1
 
-GET {{apiV1}}/nikaya/trungbokinh
+GET {{apiV1}}/nikaya/truongbokinh
 Host: {{devUrl}}
 Content-Type: application/json
-Authorization: eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3MDEzMjU0OTMsImlzcyI6Iklzc3Vlci1UZXN0Iiwic3ViIjoiaGVsbG8ifQ.S5Mz7S7ISzbS-l2hDDk7U-9-f2AwHLDsKs-iV9ltlBE5i-InGZKO4vrES2kmcQOfiRhv3ptAL5idZGLqnxkujrrS0-0d__xXtSlNNFEEun6I_fd6je8OnxYK2CT016ARzANkTCkU_-fRzi8CdZA6hnQWc0tCfCSiTFr7s0V7HZM
+Authorization: eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3MDE1MjM5MjYsImlzcyI6Iklzc3Vlci1UZXN0Iiwic3ViIjoiaGVsbG8ifQ.Y0g7QTjZMufykWoyjWf_TW1YTtEa73j9Hume2B60PPDqCZhiXa6HUCiBqAMN6GAr6H1mAz0X-k-MA043ASyvmaTQn9hG60xe-v8Y1DLY8tytCdMMNgqV1A9UpmdtVgcdNP0ZBzpMCXU7QJRzz0YBTxpzJIJLPHgmpdvLKVao4j8
 
 
 
