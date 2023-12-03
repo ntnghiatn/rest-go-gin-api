@@ -5,9 +5,18 @@ import (
 	"time"
 
 	"github.com/gin-gonic/gin"
+	objimpl "github.com/ntnghiatn/rest-go-gin-api/example/obj/objImpl"
 )
 
 func main() {
+	cus := objimpl.NewCustomObject()
+	cus.Insert("Hello")
+	cus.Insert("Ciquan")
+	cus.Insert("Kimchon")
+	cus.Insert("Conchim")
+	cusStr := cus.List()
+
+	fmt.Println("List::::", cusStr)
 	// Force log's color
 	gin.ForceConsoleColor()
 	r := gin.Default()
