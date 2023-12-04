@@ -20,7 +20,7 @@ Content-Type: application/json
 GET {{apiV1}}/user/list
 Host: {{devUrl}}
 Content-Type: application/json
-Authorization: eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3MDEyNjE0NzIsImlzcyI6Iklzc3Vlci1UZXN0Iiwic3ViIjoiaGVsbG8ifQ.oyrHAeDI0t4tPE3nXFJFVq9k7xj0fvXP8ObPYDoksbRLSZPyIzHckHAnlzQDZwdiTJ25XQFvUlqRtNxSEyV9VNa6wdR5r2xOkIvp-Il-OaCEL85Tj2Liv2QGUXmXg9TockWwq-ePbvEeFepUnlCZ2F1fpaxH0tjQzd3P-gKCixw
+Authorization: eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3MDE2NzE0NzYsImlzcyI6Iklzc3Vlci1UZXN0Iiwic3ViIjoiaGVsbG8ifQ.ioC9RxaC6Hkdm1f0T1rF5XjDiwnv487Cp_ovmtR81wP59LZ0EwD3aE-g9v9MRcHmI93ywvfK_AFFWNWSvxYL_2YIw40CCfCCEWMg_bgXrCoIFDcVdfXfvhXGYxabwjIVlNlwv6TivwHTXj66MeCbEoHCVEU4CLj-Oo3SUpqTOuY
 
 ### Get By Id
 GET {{apiV1}}/users/5
@@ -31,10 +31,11 @@ Content-Type: application/json
 POST {{apiV1}}/user/create
 Host: {{devUrl}}
 Content-Type: application/json
+Authorization: eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3MDE2NzE0NzYsImlzcyI6Iklzc3Vlci1UZXN0Iiwic3ViIjoiaGVsbG8ifQ.ioC9RxaC6Hkdm1f0T1rF5XjDiwnv487Cp_ovmtR81wP59LZ0EwD3aE-g9v9MRcHmI93ywvfK_AFFWNWSvxYL_2YIw40CCfCCEWMg_bgXrCoIFDcVdfXfvhXGYxabwjIVlNlwv6TivwHTXj66MeCbEoHCVEU4CLj-Oo3SUpqTOuY
 
 {
-  "name":"Thinh Ngo bbdd",
-  "age": 208,
+  "name":"KhaBD",
+  "age": 21,
   "address": {
     "state": "Ho Chi Minh",
     "city": "Ho Chi Minh City",
