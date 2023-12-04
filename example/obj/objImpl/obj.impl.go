@@ -7,9 +7,9 @@ type CustomObjectImpl struct {
 }
 
 // Insert implements obj.CustomObject.
-func (da *CustomObjectImpl) Insert(element interface{}) {
+func (da *CustomObjectImpl) Insert(element ...interface{}) {
 	// panic("unimplemented")
-	da.data = append(da.data, element)
+	da.data = append(da.data, element...)
 }
 
 // List implements obj.CustomObject.

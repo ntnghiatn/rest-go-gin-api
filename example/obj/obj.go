@@ -1,6 +1,6 @@
 package obj
 
 type CustomObject interface {
-	Insert(interface{})
+	Insert(...interface{})
 	List() []interface{}
 }
