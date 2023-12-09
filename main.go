@@ -22,6 +22,7 @@ var (
 	authController controllers.AuthController
 	nikaHandler    controllers.NikayaController
 	ctx            context.Context
+	mongoDb        *mongo.Database
 	userCollection *mongo.Collection
 	mongoClient    *mongo.Client
 	err            error
@@ -56,6 +57,7 @@ func init() {
 	}
 
 	//
+	mongoDb = mongoClient.Database("userdb")
 	userCollection = mongoClient.Database("userdb").Collection("users")
 	userService = services.NewUserService(userCollection, ctx)
 	userController = controllers.New(userService)
@@ -73,7 +75,8 @@ func main() {
 	}()
 	apiV1 := server.Group("/api/v1")
 
-	userController.RegisterUserRoutes(apiV1)
+	// userController.RegisterUserRoutes(apiV1)
+	routers.RegisterUserRoutes(mongoDb, ctx, apiV1)
 	authController.RegisterAuthRoutes(apiV1)
 	routers.RegisterNikayaRoutes(ctx, apiV1)
 
